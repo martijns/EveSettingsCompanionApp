@@ -1,0 +1,94 @@
+﻿<mah:MetroWindow x:Class="EveSettingsCompanionApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:EveSettingsCompanionApp"
+        mc:Ignorable="d"
+        Title="Eve Settings Companion App" Height="800" Width="1024"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <local:EveFolderSelectorControl Grid.Column="0" Grid.Row="0" EvePathChanged="EveFolderSelectorControl_EvePathChanged"/>
+            <TabControl>
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabPanel}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="Characters">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="(channels, window layout, quick access buttons)" HorizontalAlignment="Center" />
+                        
+                        <TextBlock></TextBlock>
+                        <TextBlock Text="FROM" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="your most recently logged in character should be on the left" FontSize="10" HorizontalAlignment="Center" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel MinHeight="200" Orientation="Horizontal" x:Name="SourceCharacters" MouseUp="SourceCharacters_MouseUp" HorizontalAlignment="Center">
+                                <TextBlock FontSize="25" VerticalAlignment="Center">No Eve Online profile directory detected. Try selecting one manually.</TextBlock>
+                                <!--<local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />-->
+                            </StackPanel>
+                        </ScrollViewer>
+                        
+                        <TextBlock></TextBlock>
+                        <TextBlock Text="TO" FontSize="25" HorizontalAlignment="Center" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel MinHeight="200" Orientation="Horizontal" x:Name="DestinationCharacters" MouseUp="SourceCharacters_MouseUp" HorizontalAlignment="Center">
+                                <!--<local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />-->
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <Button Content="Copy!" HorizontalAlignment="Center" Margin="10" Padding="10" Click="Character_Button_Click" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Accounts">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="(overview, shortcuts, display effects)" HorizontalAlignment="Center" />
+                        
+                        <TextBlock></TextBlock>
+                        <TextBlock Text="FROM" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="your most recently logged in account should be on the left" FontSize="10" HorizontalAlignment="Center" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel MinHeight="200" Orientation="Horizontal" x:Name="SourceAccounts" MouseUp="SourceCharacters_MouseUp" HorizontalAlignment="Center">
+                                <TextBlock FontSize="25" VerticalAlignment="Center">No Eve Online profile directory detected. Try selecting one manually.</TextBlock>
+                                <!--<local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />-->
+                            </StackPanel>
+                        </ScrollViewer>
+                        
+                        <TextBlock></TextBlock>
+                        <TextBlock Text="TO" FontSize="25" HorizontalAlignment="Center" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel MinHeight="200" Orientation="Horizontal" x:Name="DestinationAccounts" MouseUp="SourceCharacters_MouseUp" HorizontalAlignment="Center">
+                                <!--<local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />
+                                <local:EveItemControl />-->
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <Button Content="Copy!" HorizontalAlignment="Center" Margin="10" Padding="10" Click="Account_Button_Click" />
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+
+</mah:MetroWindow>
