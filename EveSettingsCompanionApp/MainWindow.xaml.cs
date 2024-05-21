@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -119,6 +120,12 @@ namespace EveSettingsCompanionApp
         private async void Account_Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             await PerformCopy("account", SourceAccounts.Children.OfType<EveItemControl>(), DestinationAccounts.Children.OfType<EveItemControl>());
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+            e.Handled = true;
         }
     }
 }

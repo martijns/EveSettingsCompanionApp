@@ -87,6 +87,32 @@
                         <Button Content="Copy!" HorizontalAlignment="Center" Margin="10" Padding="10" Click="Account_Button_Click" />
                     </StackPanel>
                 </TabItem>
+                <TabItem Header="About">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="ABOUT" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold">Application</TextBlock>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
+                            Eve Settings Companion App
+                        </TextBlock>
+                        <TextBlock/>
+                        <TextBlock/>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold">Author</TextBlock>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
+                            Martijn Stolk<LineBreak/>
+                            Github: <Hyperlink NavigateUri="https://github.com/martijns" RequestNavigate="Hyperlink_RequestNavigate">github.com/martijns</Hyperlink><LineBreak/>
+                            Ingame: <Hyperlink NavigateUri="https://evewho.com/character/531326789" RequestNavigate="Hyperlink_RequestNavigate">Veshai</Hyperlink>
+                        </TextBlock>
+                        <TextBlock/>
+                        <TextBlock/>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold">Libraries</TextBlock>
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
+                            UI Framework: <Hyperlink NavigateUri="https://github.com/MahApps/MahApps.Metro" RequestNavigate="Hyperlink_RequestNavigate">MahApps.Metro</Hyperlink><LineBreak/>
+                            Vista-style dialogs: <Hyperlink NavigateUri="https://github.com/ookii-dialogs/ookii-dialogs-wpf" RequestNavigate="Hyperlink_RequestNavigate">Ookii.Dialogs.Wpf</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
             </TabControl>
         </StackPanel>
     </Grid>
