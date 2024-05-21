@@ -80,7 +80,15 @@ namespace EveSettingsCompanionApp
             DetectedPaths.SelectedValuePath = "Value";
             DetectedPaths.ItemsSource = eveSettingsDirectories;
             if (DetectedPaths.Items.Count > 0)
-                DetectedPaths.SelectedIndex = 0;
+            {
+                // To accomodate the most common users we will select tranquility first, then if there
+                // are multiple tranquility installations, select the one with the most recent files in it.
+                var mostRecent = eveSettingsDirectories.Values
+                                    .OrderByDescending(d => d.Contains("_tq_"))
+                                    .ThenByDescending(d => new DirectoryInfo(d).GetFiles().Max(f => f.LastWriteTimeUtc))
+                                    .First();
+                DetectedPaths.SelectedValue = mostRecent;
+            }
         }
 
         private void DetectedPaths_SelectionChanged(object sender, SelectionChangedEventArgs e)
