@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace EveSettingsCompanionApp
         public MainWindow()
         {
             this.InitializeComponent();
+            this.VersionLabel.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void EveFolderSelectorControl_EvePathChanged(object source, string path)
@@ -126,6 +128,11 @@ namespace EveSettingsCompanionApp
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
             e.Handled = true;
+        }
+
+        private void StackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
         }
     }
 }

@@ -63,17 +63,24 @@ namespace EveSettingsCompanionApp
             var roamingappdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var ccpfolder = Path.Combine(roamingappdata, "..", "Local", "CCP", "EVE");
             ccpfolder = Path.GetFullPath(new Uri(ccpfolder).LocalPath);
-            foreach (var item in Directory.EnumerateFiles(ccpfolder, "core_*.dat", SearchOption.AllDirectories))
+            try
             {
-                var match = Regex.Match(Path.GetFileName(item), ".*?_(char|user)_(\\d+)\\.dat$");
-                if (match.Success)
+                foreach (var item in Directory.EnumerateFiles(ccpfolder, "core_*.dat", SearchOption.AllDirectories))
                 {
-                    var settingsdir = Path.GetDirectoryName(item);
-                    var installationdir = Path.GetDirectoryName(settingsdir);
-                    var friendly = $"{Path.GetFileName(installationdir)}{Path.DirectorySeparatorChar}{Path.GetFileName(settingsdir)}";
-                    if (!eveSettingsDirectories.ContainsKey(friendly))
-                        eveSettingsDirectories.Add(friendly, settingsdir);
+                    var match = Regex.Match(Path.GetFileName(item), ".*?_(char|user)_(\\d+)\\.dat$");
+                    if (match.Success)
+                    {
+                        var settingsdir = Path.GetDirectoryName(item);
+                        var installationdir = Path.GetDirectoryName(settingsdir);
+                        var friendly = $"{Path.GetFileName(installationdir)}{Path.DirectorySeparatorChar}{Path.GetFileName(settingsdir)}";
+                        if (!eveSettingsDirectories.ContainsKey(friendly))
+                            eveSettingsDirectories.Add(friendly, settingsdir);
+                    }
                 }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                // No EVE directory found, EVE is likely not installed
             }
 
             DetectedPaths.DisplayMemberPath = "Key";

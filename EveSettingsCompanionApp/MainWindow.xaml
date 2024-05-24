@@ -87,6 +87,28 @@
                         <Button Content="Copy!" HorizontalAlignment="Center" Margin="10" Padding="10" Click="Account_Button_Click" />
                     </StackPanel>
                 </TabItem>
+                <TabItem Header="Help">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="HELP" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
+                            This is a utility for Eve Online to easily copy account and character settings to all your other accounts and characters.
+                            Accounts currently are only identified by a number. To make sure you're copying from the right profile, the following usage is suggested:<LineBreak/>
+                            <LineBreak/>
+                            <TextBlock TextAlignment="Left">
+                                1. Close all clients<LineBreak/>
+                                2. Login the character with your favorite settings<LineBreak/>
+                                3. Close that client again<LineBreak/>
+                                4. Restart this application<LineBreak/>
+                            </TextBlock>
+                            <LineBreak/>
+                            Since the application sorts by date, the most recently logged in character and account will be on the left.<LineBreak/>
+                            <LineBreak/>
+                            If anyone knows a reliable way of converting the account id's to account names, let me know!
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
                 <TabItem Header="About">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
@@ -94,7 +116,8 @@
                         <TextBlock Text="" FontSize="25" HorizontalAlignment="Center" />
                         <TextBlock FontSize="16" HorizontalAlignment="Center" FontWeight="Bold">Application</TextBlock>
                         <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
-                            Eve Settings Companion App
+                            <Hyperlink NavigateUri="https://github.com/martijns/EveSettingsCompanionApp" RequestNavigate="Hyperlink_RequestNavigate">github.com/martijns/EveSettingsCompanionApp</Hyperlink><LineBreak/>
+                            Version: <TextBlock x:Name="VersionLabel"/>
                         </TextBlock>
                         <TextBlock/>
                         <TextBlock/>
@@ -102,7 +125,7 @@
                         <TextBlock FontSize="16" HorizontalAlignment="Center" MaxWidth="600" TextWrapping="Wrap" TextAlignment="Center">
                             Martijn Stolk<LineBreak/>
                             Github: <Hyperlink NavigateUri="https://github.com/martijns" RequestNavigate="Hyperlink_RequestNavigate">github.com/martijns</Hyperlink><LineBreak/>
-                            Ingame: <Hyperlink NavigateUri="https://evewho.com/character/531326789" RequestNavigate="Hyperlink_RequestNavigate">Veshai</Hyperlink>
+                            Ingame character: <Hyperlink NavigateUri="https://evewho.com/character/531326789" RequestNavigate="Hyperlink_RequestNavigate">Veshai</Hyperlink>
                         </TextBlock>
                         <TextBlock/>
                         <TextBlock/>
