@@ -4,7 +4,7 @@ This is a utility for Eve Online to easily copy account and character settings t
 
 ## Installation
 
-The application can be found in the Microsoft Windows Store. Link will be added later.
+The application can be found in the [Microsoft Store](https://www.microsoft.com/store/productId/9PPD8RDCSD9Z?ocid=pdpshare).
 
 Alternatively, you can build the application in Visual Studio from source.
 
