@@ -1,0 +1,60 @@
+name: ESCA Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest
+
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Publish app
+      run: dotnet build EveSettingsCompanionApp/EveSettingsCompanionApp.csproj -r win-x64 -c Release -o EveSettingsCompanionApp/
+
+    - name: Package
+      uses: thedoctor0/zip-release@0.7.5
+      with:
+        filename: 'release.zip'
+        path: 'EveSettingsCompanionApp/'
+        type: 'zip'
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./release.zip
+        asset_name: ESCA-binaries-win-x64-${{ github.ref }}.zip
+        asset_content_type: application/zip
