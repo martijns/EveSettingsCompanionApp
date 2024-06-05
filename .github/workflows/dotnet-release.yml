@@ -28,13 +28,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Publish app
-      run: dotnet build EveSettingsCompanionApp/EveSettingsCompanionApp.csproj -r win-x64 -c Release -o EveSettingsCompanionApp/
+      run: dotnet build EveSettingsCompanionApp/EveSettingsCompanionApp.csproj -r win-x64 -c Release -o ESCA/
 
     - name: Package
       uses: thedoctor0/zip-release@0.7.5
       with:
         filename: 'release.zip'
-        path: 'EveSettingsCompanionApp/'
+        path: 'ESCA/'
         type: 'zip'
 
     - name: Create Release
